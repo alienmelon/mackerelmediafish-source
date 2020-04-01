@@ -1,0 +1,30 @@
+.dialogue{
+		display: inline;
+  		/*background: black !important;*/
+  		background: rgba(0, 0, 0, 0.7) !important;
+  		box-shadow: 10px 10px 0px black;
+  		/*transform: rotate(-4.5deg) !important;*/  		
+  		display: flex;
+  		align-items: center !important;
+  		justify-content: center !important;*/
+  		/*text-align: center;*/
+	}
+	
+	.inspectionMessageButton{
+		display: inline;
+  		background: black;
+  		color: white !important;
+  		padding: 10px;
+		/*line-height: 30px;*/
+	}
+	
+	.goback{
+		background: white !important;
+  		box-shadow: 10px 10px 0px dimgrey;
+  		cursor: pointer !important;
+	}
+	
+	a{
+		color: white !important;
+		font-style: italic !important;
+	}

@@ -1,0 +1,257 @@
+
+
+
+	
+	body{
+	
+		/*cursor: url("${resourcesFolderName}/IMG_CURSOR_DEFAULT.png"), auto !important;*/
+	
+		/*image pixelation*/
+		image-rendering: pixelated;
+		image-rendering: -moz-crisp-edges;
+		image-rendering: crisp-edges;
+		
+		background-image: url("${resourcesFolderName}/IMG_BLUE_SML.png");
+ 		background-repeat: repeat-x;
+ 		
+ 		background-color: black;
+ 		
+ 		
+ 		/*font-smooth: auto | never | always |  | length | initial | inherit
+-webkit-font-smoothing : none | subpixel-antialiased | antialiased;*/
+	}
+	
+	/*iframes for fish demos...*/
+	.iframeGame{
+	
+	}
+	
+	.text_overflowHide{
+	
+		overflow: hidden !important;
+		
+	}
+	
+	
+	.txt_title1{
+	
+		  text-shadow: 
+			-1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black,
+			2px 2px 3px #000000;
+			
+			/*, 
+			1px 0px 0px #333366, 0px 1px 0px #333366, 2px 1px 0px #333366, 1px 2px 0px #333366, 3px 2px 0px #333366, 2px 3px 0px #333366, 4px 3px 0px #333366, 3px 4px 0px #333366, 5px 4px 0px #333366,
+			3px 5px 0px black, 6px 5px 0px black, 
+			-1px 2px 0 black, 0 3px 0 black, 1px 4px 0 black, 2px 5px 0px black,
+			2px -1px 0 black, 3px 0 0 black, 4px 1px 0 black, 5px 2px 0px black, 6px 3px 0 black, 7px 4px 0 black,
+		10px 10px 4px #333366;*/
+	
+	}
+	
+	.txt_title2{
+		
+		text-shadow: 
+			-1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black,
+				2px 2px 3px black, 
+			1px 0px 0px #FF6602, 0px 1px 0px #FF6602, 2px 1px 0px #FF6602, 1px 2px 0px #FF6602, 3px 2px 0px #FF6602, 2px 3px 0px #FF6602, 4px 3px 0px #FF6602, 3px 4px 0px #FF6602, 5px 4px 0px #FF6602,
+			3px 5px 0px black, 6px 5px 0px black, 
+			-1px 2px 0 black, 0 3px 0 black, 1px 4px 0 black, 2px 5px 0px black,
+			2px -1px 0 black, 3px 0 0 black, 4px 1px 0 black, 5px 2px 0px black, 6px 3px 0 black, 7px 4px 0 black,
+				2px 2px 4px black;
+	
+	}
+	
+	.txt_animatedTitle {
+	
+		text-shadow: 
+			-1px -1px 0 black,
+			1px -1px 0 black,
+			-1px 1px 0 black,
+			1px 1px 0 black,
+			2px 2px 3px #000000;
+			
+		animation: an_shake .1s linear infinite;
+	}
+	
+	.menuSelection{
+		text-shadow: 
+			-1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black,
+			2px 2px 3px #000000;
+		cursor: url("${resourcesFolderName}/IMG_CURSOR_HAND.png"), auto !important;
+		
+		transition: all .3s ease;
+			
+	}
+	
+	/*for techy intro, download and cute text*/
+	.txt_advocute{
+	
+		/*display: inline !important;
+ 		background: teal !important;*/
+ 		
+ 		text-shadow: 
+			-1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 blue;
+	
+	}
+	
+	.menuSelection:active{
+		transform: translate(0px, 5px);
+		-webkit-transform: translate(0px, 5px);
+		box-shadow: 0px 1px 0px 0px;
+	}
+	
+	.menuSelection:hover{
+		transform: scale(1.2) perspective(1px);
+	}
+	
+	.btn_element_animated{
+		cursor: url("${resourcesFolderName}/IMG_CURSOR_HAND.png"), auto !important;
+		transition: all .3s ease;
+	}
+	.btn_element_animated:hover{
+		transform: scale(1.2) perspective(1px);
+	}
+	
+	
+	.btn_element, .fishlet, .hrefClassic{
+		cursor: url("${resourcesFolderName}/IMG_CURSOR_HAND.png"), auto !important;
+	}
+	
+	.container{
+		cursor: url("${resourcesFolderName}/IMG_CURSOR_DEFAULT.png"), auto !important;
+	}
+	
+	/*manage default ahref's...*/
+	a{
+		cursor: url("${resourcesFolderName}/IMG_CURSOR_HAND.png"), auto !important;
+		transition: all .3s ease;
+	}
+	a:hover{
+		transform: scale(2) !important;
+		color: grey !important;
+	}
+	
+	/*shaking elements -- NOTE: COMMENT BACK IN WHEN DONE BUILDING THIS*/
+	.shaking{
+		animation: an_shake .1s linear infinite;
+	}
+	
+	/*talking and speech bubbles (anime font)*/
+	.speech {
+  		display: inline;
+  		background: white;
+  		box-shadow: 10px 10px 0px black;
+	}
+	
+	.yelling{
+		 display: inline;
+  		background: white;
+  		box-shadow: 10px 10px 0px black;
+  		animation: an_shake .1s linear infinite;
+	}
+	
+	/*SITE page (inspection cursors and buttons...)*/
+	.siteInspect{
+		/*cursor: url("${resourcesFolderName}/ICO_CURSOR_INSPECT_LOOK_SML.png"), auto !important;*/
+		cursor: url("${resourcesFolderName}/IMG_CURSOR_MAGNIFY_EXAMINE.png"), auto !important;
+		transition: all .3s ease;
+		
+	}
+	.siteInspect:hover{
+		transform: scale(1.4) !important;
+	}
+	/*inspect without the hover animation*/
+	.siteInspectBasic{
+		cursor: url("${resourcesFolderName}/IMG_CURSOR_MAGNIFY_EXAMINE.png"), auto !important;
+	}
+	/*site inspection for classic hyperlinks*/
+	.siteInspectHref{
+		color: blue !important;;
+		text-decoration: underline;
+		cursor: url("${resourcesFolderName}/IMG_CURSOR_MAGNIFY_EXAMINE.png"), auto !important;
+		transition: all .3s ease;
+	}
+	.siteInspectHref:hover{
+		transform: scale(1.4) !important;
+	}
+	
+	/*SITE PAGE inspection messages*/
+	.inspectionMessage{
+		display: inline;
+  		background: white;
+  		box-shadow: 10px 10px 0px black;
+  		/*transform: rotate(-4.5deg) !important;*/
+  		cursor: url("${resourcesFolderName}/IMG_CURSOR_DEFAULT.png"), auto !important;
+  		
+  		/*display: flex;
+  		align-items: center !important;
+  		justify-content: center !important;*/
+  		/*text-align: center;*/
+	}
+	/*part of the above, the countdown*/
+	.inspectionMessageCountdown{
+		display: inline;
+  		background: #FFFF99;
+  		box-shadow: 10px 10px 0px black;
+  		cursor: url("${resourcesFolderName}/IMG_CURSOR_DEFAULT.png"), auto !important;
+  		animation: an_countdown 1s ease-out infinite;
+	}
+	
+	.inspectionMessageButton{
+		display: inline;
+  		background: black;
+  		color: white !important;
+  		padding: 10px;
+		cursor: url("${resourcesFolderName}/IMG_CURSOR_HAND.png"), auto !important;
+		/*line-height: 30px;*/
+	}
+	
+	/*items obtained screen (zelda like)*/
+	.itemObtainedMessage{
+		display: inline;
+  		background: black;
+  		box-shadow: 10px 10px 0px black;
+	}
+	
+	
+	/*classic buttons*/
+	.hrefClassic{
+		color: blue !important;;
+		text-decoration: underline;
+	}
+	.hrefClassic:visited{
+		color: purple;
+	}
+	.hrefClassic:hover{
+		animation: an_shake .1s linear infinite;
+	}
+	
+	/*padding around the hype container*/
+	#index_hype_container{
+
+		top: 5%;
+		
+		min-width: 640px;
+		min-height: 960px;
+	}
+	
+	
+	@keyframes an_shake {
+		0% { transform: translate(1px, 1px) rotate(0deg); }
+		10% { transform: translate(-1px, -2px) rotate(-1deg); }
+		20% { transform: translate(-3px, 0px) rotate(1deg); }
+		30% { transform: translate(3px, 2px) rotate(0deg); }
+    	40% { transform: translate(1px, -1px) rotate(1deg); }
+    	50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    	60% { transform: translate(-3px, 1px) rotate(0deg); }
+    	70% { transform: translate(3px, 1px) rotate(-1deg); }
+    	80% { transform: translate(-1px, -1px) rotate(1deg); }
+    	90% { transform: translate(1px, 2px) rotate(0deg); }
+    	100% { transform: translate(1px, -2px) rotate(-1deg); }
+	}
+	
+	@keyframes an_countdown{
+		0%   { background: red; }
+		50%  { background: yellow; }
+		100% { background: red; }
+	}

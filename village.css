@@ -1,0 +1,46 @@
+body{
+			
+			/*image pixelation*/
+			image-rendering: pixelated;
+			image-rendering: -moz-crisp-edges;
+			image-rendering: crisp-edges;
+
+		
+			background-image: url("${resourcesFolderName}/IMG_STARS1.gif");
+  			background-repeat: repeat;
+		}
+		
+		padding around the hype container
+		#index_hype_container{
+
+			/*top: 2%;*/
+		
+			min-width: 640px;
+			min-height: 960px;
+		}
+		
+		/*SITE PAGE inspection messages*/
+		.inspectionMessage{
+			display: inline;
+  			background: white !important;
+  			box-shadow: 10px 10px 0px black;
+  			/*transform: rotate(-4.5deg) !important;*/
+  			cursor: url("${resourcesFolderName}/CURSOR.png"), auto !important;
+		}
+		
+		/*items obtained screen (zelda like)*/
+		.itemObtainedMessage{
+			display: inline;
+  			background: black !important;
+  			box-shadow: 10px 10px 0px black;
+		}
+		
+		/*any changes to the verm (like brightness)*/
+		.verm{
+			transition: all 1s ease;
+		}
+		
+		/*objects in the background that will be set to 0 transparency when you "win" -- chaos should fade out*/
+		.destruction{
+			transition: all 3s ease;
+		}
