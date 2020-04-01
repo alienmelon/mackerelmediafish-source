@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8"/>
+	<link rel="stylesheet" type="text/css" href="css/offender.css">
+	<title>Offender</title>
+<!--Adobe Edge Runtime-->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="Offender_HTML_edgePreload.js"></script>
+    <style>
+        .edgeLoad-EDGE-8051110 { visibility:hidden; }
+    </style>
+<!--Adobe Edge Runtime End-->
+<script type="text/javascript">
+	//handle localStorage "highscores" here...
+	var comp;
+	//callback
+	AdobeEdge.bootstrapCallback(function(compId) {
+		/*
+		HighScores:
+		I am going to use localStorage for highscores.
+		To keep this version simple, I will save only the last score instead of the top ten plays.
+		This functionality can always be expanded on. I suggest looking into: 
+		Local Storage And How To Use It On Websites: http://coding.smashingmagazine.com/2010/10/11/local-storage-and-how-to-use-it/
+		saving data with localStorage: http://hacks.mozilla.org/2009/06/localstorage/
+		Or making a classic "leaderboard" using a database:
+		Using Playtomic: API http://gmc.yoyogames.com/index.php?showtopic=538699
+		Add online highscores to your HTML5 games: http://gmc.yoyogames.com/index.php?showtopic=525654
+		*/
+	    comp = AdobeEdge.getComposition(compId).getStage();
+		//check if local storage is supported (browser)
+		if(typeof(Storage)!=="undefined"){
+			console.log("localStorage is supported.");
+			//if it's supported create this functions on/to stage
+			//usage: sym.getComposition().getStage().setScore("50");
+			//SCORE:
+			comp.setScore = function(plyr_score){
+				localStorage.setItem("score", plyr_score);
+				console.log("setScore called. plyr_score: " + plyr_score);
+			}
+			comp.getScore = function(){
+				return localStorage.getItem("score");
+				console.log("getScore called.");
+			}
+			//NAME:
+			comp.setName = function(plyr_name){
+				localStorage.setItem("name", plyr_name);
+				console.log("setName called. plyr_name: " + plyr_name);
+			}
+			comp.getName = function(){
+				return localStorage.getItem("name");
+				console.log("getName called.");
+			}
+		}else{
+			// browser is too old -- or no web storage support
+			window.alert("Your browser does not support web storage. Score will not be saved.");
+		}
+	});
+</script>
+</head>
+<body style="margin:0;padding:0;">
+	<div id="Stage" class="EDGE-8051110">
+	</div>
+</body>
+</html>
