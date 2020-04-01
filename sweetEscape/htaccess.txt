@@ -1,0 +1,12 @@
+Options +Indexes
+
+ReadmeName directoryHeader.html
+IndexIgnore directoryHeader.html
+
+AddDefaultCharset UTF-8
+
+AuthType Basic
+AuthName "Please enter the secret password and name in order to escape..."
+AuthUserFile /PATH TO PASSWORD/.htpasswd
+AuthGroupFile /PATH TO GROUP/.htgroup
+Require user gogopowerfishy
