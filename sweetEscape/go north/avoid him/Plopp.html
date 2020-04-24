@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Plopp</title>
+</head>
+	
+	<style>
+		
+		body{
+			font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+			font-size: 40px;
+			line-height: 40px;
+			color:white;
+			
+			height: 100%;
+			
+			/*background: url("../SWAMP.gif") no-repeat center center fixed;
+			background-size: cover;*/
+			background-color:black;
+			
+		}
+		
+		#home{
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			
+			padding: 5px;
+			border: 5px solid white;
+			
+			box-shadow:
+    		0 0 10px 30px #fff,
+    		0 0 80px 60px #0033FF,
+			0 0 100px 90px #0000FF;
+			
+			background-color: black;
+			animation: colorloop 20s infinite;
+		}
+		
+		#creature{
+			right: 10%;
+			bottom: 10%;
+			font-size: 50px;
+			animation: bounce 0.1s ease-out infinite;
+		}
+		
+		#story{
+			max-width: 640px;
+			text-align: center;
+			font-size: 30px;
+			color: black;
+			background-color: #FF00D8;
+			
+			animation: rotation 1s ease-out alternate infinite;
+		}
+		
+		#back{
+			position: absolute;
+			left: 5px;
+			bottom: 5px;
+			box-shadow:
+    		0 0 60px 30px #fff,
+    		0 0 100px 60px #0033FF,
+			0 0 140px 90px #0000FF;
+		}
+		
+		@keyframes colorloop {
+		  0% { background-color: #000000; }
+		  20% { background-color: #0E0E63; }
+		  40% { background-color: #000000; }
+		  60% { background-color: #000000; }
+		  80% { background-color: #0E0E63; }
+		  100% { background-color: #000000; }
+		}
+		
+		@keyframes rotation {
+		  0% {
+			transform: rotate(-.7deg);
+		  } 100% {
+			transform: rotate(.7deg);
+		  }
+		}
+		
+		@keyframes bounce {
+			from { transform: translate(0,  0px); }
+			50%  { transform: translate(0, 2px); }
+			to   { transform: translate(0, 0px); }    
+
+}
+		
+	</style>
+
+<body>
+<div id="home">
+<center><div id="creature">			
+<pre>
+oO)-.
+/__  _\
+ \  \(  |
+^~_*_~`
+</pre>	
+</div>
+<div id="story">
+A comfortable looking frog, half submerged in ASCII swamp slime, greets you with a lazy croak. This frog had something important to say to you but forgot... Too bad. It may have been pertinent to your quest. This frog KNOWS something... You're sure of it.
+</div></center>
+</div>
+<div id="back"><a href="./">Go back...</a></div>
+</body>
+</html>

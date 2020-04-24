@@ -1,0 +1,391 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>A beautiful view of the hills...</title>
+<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+<script type="text/javascript" src="js/detectmobilebrowser.js"></script>
+<script>
+//
+//various functions
+function num_randrange(num_min, num_max) {
+    return (Math.ceil(Math.random()*(num_max-num_min+1))+num_min);
+};
+//return starname
+function return_starname(fnLength, lnLength){
+	//make a name
+	var arr_vowels = ["A","E","I","O","U"];
+	var arr_cons = ["B","C","D","F","G","H","J","K","L","M","N","P","Q","R","S","T","V","W","X","Y","Z"];
+	//prefix and suffixes
+	//suffixes are chosen at random
+	var arr_suffix = [" Australis", " Corona", " Major", " Minor", " Majoris", " Borealis", " Minorum", " Minoris", " Sagittarii"];
+	var arr_suffix_small = ["pheus", "angulum", "aurus", "pheus", "gulum", "orpius", "pius", "orius", "i", "us", "alis", "conis", "is", "phei", "uri", "ersei", "orvi", "iguae", "orum", "lumbae", "ephei", "sae", "otis", "dromedae", "dae", "eonis", "nis", "uis", "ittarii", "arii", "onis", "ionis", "drae", "gasi", "ucis", "corum", "venati", "strini", "conis", "drac", "gni", "pricorni", "quulei", "sco", "ulis", "gae", "uchi", "minorum", "ginis", "eonis", "brae", "ibrae"];
+	//prefixes are fixed
+	var arr_prefix = ["Eri", "Dan", "Er", "Ac", "Am", "Ar", "Scorpi", "Canc", "Cance", "Scorp", "Leo", "Tau", "Libri", "Lyr", "Androme", "Andro", "Ly", "Virg", "Vi", "Sagi", "Aqua", "Aquari", "Cygn", "Ursa", "Sura", "Tauru", "Rus", "Cephe", "Le", "Leo", "Gru", "Drac", "Draco", "Cygn", "Corona", "Cora", "Cephe", "Perse", "Eus", "Pega", "Aurig", "Gemi", "Ini", "Columb", "Umba", "Urs", "Crat", "Androm", "Gru", "Orio", "Scorpi", "Hydr", "Corona", "Borealis", "Pisce", "Lyn", "Aqua", "Aquil", "Canis", "Cani", "Serpen", "Serpens", "Serp", "Erid", "Eridan", "Danus", "Phoen", "Phoeni", "Lepu", "Carin", "Ina", "Aurus", "Erida", "Cetu", "Libr", "Aquar", "Cassio", "Cass", "Gemi", "Ophiu", "Tau", "Canes", "Cane", "Ophiu", "Ophiuch", "Uchus", "Ser", "Venati", "Vena", "Vir", "Vrai", "Vra", "Capri", "Cap", "Caprico", "Deliph", "Cetus", "Com", "Coma", "Ber", "Beren", "Scorpi", "Taur", "Trian", "Taur", "Pega", "Cepheu"];
+	//prefix and suffix part
+	var randNumSuffix = Math.ceil(Math.random()*100);//if bellow a certain number then yes show one
+	var randSuffix; //asigned in condition bellow
+	//
+	if(Math.random()*100>50){
+		randSuffix = arr_suffix_small[Math.ceil(Math.random()*arr_suffix_small.length)-1];
+	}else{
+		randSuffix = arr_suffix[Math.ceil(Math.random()*arr_suffix.length)-1];
+	
+	};
+	var randPrefix = arr_prefix[Math.ceil(Math.random()*arr_prefix.length)-1];
+	//the name part
+	var firstName = "";
+	var lastName = "";
+	var fullName = "";//this value is returned
+	//randomize the vowel vs. consonant order (so the name starts with either or)
+	var arr_firstNameOrder = [arr_vowels,arr_cons];
+	var arr_lastNameOrder = [arr_vowels,arr_cons];
+	arr_firstNameOrder = arr_firstNameOrder.sort(function(){return Math.round(Math.random());});
+	arr_lastNameOrder = arr_firstNameOrder.sort(function(){return Math.round(Math.random());});
+	//first name
+	for (var i=0; i<fnLength; ++i)
+	{
+		firstName +=  arr_firstNameOrder[0][Math.ceil(Math.random() * arr_firstNameOrder[0].length) - 1] + arr_firstNameOrder[1][Math.ceil(Math.random() * arr_firstNameOrder[1].length) - 1];
+	}
+	//last name
+	for (var j=0; j<lnLength; ++j){
+		lastName +=  arr_lastNameOrder[0][Math.ceil(Math.random() * arr_lastNameOrder[0].length) - 1] + arr_lastNameOrder[1][Math.ceil(Math.random() * arr_lastNameOrder[1].length) - 1];
+	}
+	//if it should have a suffix (and append a suffix)
+	if(randNumSuffix<50){
+		fullName = randPrefix+firstName+" "+lastName+randSuffix;
+	}else{
+		fullName = randPrefix+firstName+" "+lastName;
+	}
+	fullName = fullName.toUpperCase();
+	//
+	return fullName;
+}
+//return type and name (build more of a description)
+function return_startype(str_char){
+	var str_generic = "Star";
+	var arr_withname = ["Solar System", "Giant planet", "Gas giant", "Ice giant", "Moon", "Minor planet", "Dwarf planet", "Planet", "Sun", "Planet", "Interstellar", "Ocean", "Pulsar planet", "Rogue planet", "Super-Earth", "System", "Stars", "Star cluster"];
+	var arr_notnamed = ["Heliosphere", "Oort cloud", "Meteoroid", "Micrometeoroid", "Meteor", "Bolide", "Asteroid", "Binary", "Trans-Neptunian object", "Small Solar System body", "Comet", "Planetesimal", "Earth analog", "Chthonian"];
+	//return this
+	var str_return = "";
+	//random number
+	var randNum = Math.random()*100;
+	//chose and give name if it should have a name
+	if(randNum>50){
+		str_return = arr_withname[Math.ceil(Math.random()*arr_withname.length)-1]+":<br>"+return_starname(num_randrange(0,2),num_randrange(0,2));
+	}else if(randNum>30){
+		str_return = str_generic + ":<br>"+return_starname(num_randrange(0,2),num_randrange(0,2));
+	}else{
+		str_return = arr_notnamed[Math.ceil(Math.random()*arr_notnamed.length)-1];
+	}
+	//
+	return "<h1>"+str_char+"</h1><br>"+str_return;
+}
+//
+//starscape: onload
+function ap_init(){
+	//vars
+	var num_mouseX;
+	var num_mouseY;
+	var win_width = window.innerWidth;
+	var win_height = window.innerHeight;
+	//fire
+	var arr_fire = ["IMG_GRADIENT03.png", "IMG_GRADIENT04.png", "IMG_GRADIENT05.png"];
+	var arr_embers = ["·", ".", "´"];
+	var arr_firecol = ["#FF0000", "#FF9900", "#FFFF00", "#FFFFFF"];
+	//var int_fire;
+	var arr_snd_events = ["snd_evnt03"];//, "snd_evnt01", "snd_evnt02", "snd_evnt04"];
+	//characters to map
+	var arr_stars = ["a", "A", "s", "S", "d", "D", "f", "F", "g", "G", "h", "H", "j", "J", "k", "K", "l", "L", "z", "Z", "x", "X", "c", "C", "v", "V", "b", "B", "n", "N", "m", "M", "q", "Q", "w", "W", "e", "E", "r", "R", "t", "T", "y", "Y", "u", "U", "i", "I", "o", "O", "p", "P", "·", ".", ".", "·", "´", "★", "☆", "⋆", "⍟", "⍣", "★", "☆", "✦", "✧", "✪", "✫", "✬", "✯", "✰", "✴", "*", ".", ",", "`", "✵", "o", "O", "0", "✶", "✷", "✸", "✹", "❂", "★", "☆", "☻", "⁂", "☉", "☌", "☉", "", "☽", "☾", "", "△", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "△"];
+	var arr_star_id = [];//star ids go here
+	//
+	var arr_field = []; //the current starfield saved
+	//
+	//get mouse position
+	$(document).mousemove(function(evnt){
+		num_mouseX = evnt.pageX;
+		num_mouseY = evnt.pageY;
+	})
+	//fire
+	function make_flame(){
+		//flame
+		if(Math.random()*100 > 50){
+			var div_flame = $('<div class="fire"/>').css({
+					'position': 'absolute',
+					'bottom' : String(num_randrange(-100, -30))+'px',
+					'left': String(num_randrange(10, 15))+'px',
+					'pointer-events': 'none'
+					}).html('<img src=images/'+arr_fire[Math.ceil(Math.random()*arr_fire.length)-1]+' alt="" width='+num_randrange(500, 3000)+' height='+num_randrange(100, 150)+'>'); 
+					//move
+					div_flame
+					.clone()
+					.appendTo('#fire')
+					.fadeOut(num_randrange(1000, 3000), function(){
+						$(this).remove();
+					});
+				};
+		//embers
+		if(Math.random()*100 > 80){
+			var div_ember = $('<div class="fire"/>').css({
+					'position': 'absolute',
+					'bottom' : String(num_randrange(0, 20))+'px',
+					'color' : arr_firecol[Math.ceil(Math.random()*arr_firecol.length)-1],
+					'left': String(num_randrange(0, 100))+'%',
+					'pointer-events': 'none'
+					}).html(arr_stars[Math.ceil(Math.random()*arr_stars.length)-1]);
+			div_ember
+					.clone()
+					.appendTo('#fire')
+					.animate(
+						{
+							'top': '0px',
+							'left': String(num_randrange(0, win_width))+'px',
+							'opacity':'0'
+						},
+						Math.random()*8000 + win_height,
+						"linear",
+						function() {
+							$(this).remove();
+						}
+					);
+		};
+	};
+	//events
+	star_onOver = function(event){
+		$('#story').html(event.target.id);
+		$('#'+arr_snd_events[Math.ceil(Math.random()*arr_snd_events.length)-1]).get(0).play();
+		//return_starname(num_randrange(0,2),num_randrange(0,2))
+		//$('#story').show();
+		$('#story').finish();
+		$('#story').css({
+			'top':num_mouseY + $('#story').outerHeight()/2,
+			'left':num_mouseX + $('#story').outerWidth()/2
+		}).fadeIn('fast');
+		//
+	}
+	star_onOut = function(event){
+		//$('#story').hide();
+		$('#story').fadeOut('slow');
+	}
+	
+	//make stars
+	for(var i = 0; i < win_height * 8; ++i){
+		if(Math.random()*100>95){
+			//id for click event
+			var strchar = arr_stars[Math.ceil(Math.random()*arr_stars.length)-1];
+			//!! lol cutting corners here got out of hand please clean this up it's embarassing sheesh
+			//...i'll probably forget tho
+			var stars = $('<a id="'+return_startype(strchar)+'" onmouseover="star_onOver(event)" onmouseout="star_onOut(event)" style="cursor:help; font-size:'+num_randrange(1,18)+'px; font-family: monospace"/>').html(strchar);
+			arr_field.push(stars);
+		}else{
+			arr_field.push(' ');
+		};
+	};
+	
+	//random mountains/trees here
+	for(var i = 0; i<num_randrange(5,30); ++i){
+		var rand_borderpx = String(num_randrange(10, 100))+'px';
+		var treescape = $('<div class="trees"/>').css(
+				{
+					'border-left': rand_borderpx+' solid transparent',
+					'border-right': rand_borderpx+' solid transparent',
+					'border-bottom': rand_borderpx+' solid black',
+					'left': String(num_randrange(1, 100))+'%'
+				}
+				).html('');
+			treescape.appendTo('#landscape');
+	};
+	
+	
+	//various
+	/*if(jQuery.browser.mobile == true){
+		$("#story").append("This project is not optimized for mobile. Sorry. <a href='http://generators.alienmelon.com'>Click here</a> to return to the generators page.");
+		//add message here to come back on desktop
+	}else{*/
+		//populate and trigger
+		$("#story").hide();
+		$("#skymap").append(arr_field);
+		int_fire = setInterval(make_flame, 200);
+	//}
+}
+</script>
+<style>
+/*font*/
+@font-face {
+    font-family: 'fixedsys_excelsior_3.01Rg';
+    src: url('fontquirrels/fsex300-webfont.eot');
+    src: url('fontquirrels/fsex300-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fontquirrels/fsex300-webfont.woff') format('woff'),
+         url('fontquirrels/fsex300-webfont.ttf') format('truetype'),
+         url('fontquirrels/fsex300-webfont.svg#fixedsys_excelsior_3.01Rg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+img{
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+#skymap{
+	/*basic
+	width:100%;
+	height:100%;*/
+	cursor:default;
+	line-height:15px;
+	/*format*/
+	white-space: pre-wrap;
+	word-break: break-all;
+	word-wrap: break-word;
+	/*style*/
+	/*text-shadow: 0 0 3px white, 0 0 5px #ABFFFE;*/
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: -moz-none;
+    -o-user-select: none;
+    user-select: none;
+}
+body{
+	/*text-shadow: 0 0 3px white, 0 0 5px #ABFFFE;*/
+	font-family: 'fixedsys_excelsior_3.01Rg', monaco, monospace;
+	overflow:hidden;
+	background-color:black;
+	color:white;
+	width:100%;
+	height:100%;
+}
+h1{
+	color:white;
+	font-size:25px;
+	text-align:center;
+}
+/*foreground frames and backgrounds*/
+#IMG_frame01, #IMG_GRADIENT01{
+	position: fixed; 
+	top: 0; 
+	left: 0; 
+	min-width: 100%;
+	min-height: 100%;
+	pointer-events: none;
+}
+#IMG_GRADIENT01{
+	z-index: -4;
+}
+.trees{
+	position:absolute;
+	bottom:0;
+	width: 0; 
+ 	height: 0;
+	z-index: -2;
+	/*notes: this gets duplicated and assigned random values above
+	left: randompx
+ 	border-left: randompx solid transparent;
+	border-right: randompx solid transparent;
+	border-bottom: randompx solid black;*/
+}
+.fire{
+	position:absolute;
+	bottom:0;
+	left:50%;	
+}
+#landscape{
+	/*position: absolute;
+	bottom:0;*/
+}
+.box{
+	pointer-events: none;
+	max-width:250px;
+	position: absolute;
+	background: black;
+	padding: 20px;
+	top: 50%;
+	left: 50%;
+	transform: translate3d(-50%,-50%, 0);
+	/*frame*/
+	border: 3px solid;
+    padding: 20px;    
+    border-image: url('images/IMG_DIV_TILE01.gif');
+    border-image-slice: 2;
+    border-image-repeat: repeat;
+}
+.selection {
+    display: inline;
+    background: black;
+    color: white; 
+	transition: background-color 0.8s ease;
+ }
+ .selection:hover{
+	background: #3AFBE8; 
+	transition: background-color 0.8s ease;
+ }
+a{
+	color: white;
+}
+
+#nav{
+	position: absolute;
+	line-height: 30px;
+	padding: 20px;
+	font-size: 25px;
+	text-shadow: 0 0 3px blue, 0 0 5px #ABFFFE;
+	max-width:550px;
+}
+</style>
+</head>
+<!-- scene -->
+<audio loop autoplay id="snd_loop">
+  <source src="audio/AUD_PLANETARIUM_SOUNDSCAPE02.ogg" type="audio/ogg">
+  <source src="audio/AUD_PLANETARIUM_SOUNDSCAPE02.mp3" type="audio/mpeg">
+  <source src="audio/AUD_PLANETARIUM_SOUNDSCAPE02.wav" type="audio/wav">
+</audio>
+<audio autoplay id="snd_startup">
+	<source src="audio/AUD_STARTUP.ogg" type="audio/ogg">
+	<source src="audio/AUD_STARTUP.mp3" type="audio/mpeg">
+	<source src="audio/AUD_STARTUP.wav" type="audio/wav">
+</audio>
+<audio id="snd_evnt03">
+  <source src="audio/AUD_EVENT03.ogg" type="audio/ogg">
+  <source src="audio/AUD_EVENT03.mp3" type="audio/mpeg">
+  <source src="audio/AUD_EVENT03.wav" type="audio/wav">
+</audio>
+
+<body onload="ap_init();">
+	
+	<div id="nav">
+	<span style="color:#ADECEF; background:black">You reach the end of the road going north. There are nothing but precipitous cliffs up ahead. It would be a hazard to go further... Although, there is a small path leading east that looks safe.
+<br><br>
+Overhead is a beautiful view of an infinite ASCII starscape. You sit beside the gradient fire that you lit, taking everything in. Unicode embers float up... The darkness here is peaceful.
+<br><br>
+<a href="../../../go east">Follow path east...</a>
+</span>
+	<br>
+	</div>
+	
+<div id="story" class="box"></div>
+
+<div id="sky">
+	<pre><div id="skymap"></div></pre>
+</div>
+
+<div id="backgrounds">
+	<!-- not a css gradient but could be but probably shouldn't so...-->
+	<div><img id="IMG_GRADIENT01" src="images/IMG_GRADIENT02.png" alt=""></div>
+</div>
+
+<div id="foregrounds">
+
+	<div id="landscape">
+    	<!-- fire goes here -->
+    	<div id="fire"></div>
+    	<!-- trees/mountains are generated at random above -->
+    	<!-- <div class="trees"></div> -->
+    </div>
+    
+	<div><img id="IMG_frame01" src="images/IMG_DIV_TILE01.gif" alt="" style="opacity:0.1"></div>
+    
+</div>
+
+</body>
+</html>
